@@ -110,7 +110,6 @@ public class Test1 extends TestBase {
 	@Test(priority = 8)
 	public void validateOrder() throws InterruptedException {
 		Assert.assertTrue(manufacturingOrderPage.get_ProductName().contains(PRODUCT_NAME));
-		Thread.sleep(5000);
 	}
 
 }
