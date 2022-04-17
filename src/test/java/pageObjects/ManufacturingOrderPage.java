@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.Wait;
 
 public class ManufacturingOrderPage {
 	WebDriver driver;
@@ -30,15 +31,15 @@ public class ManufacturingOrderPage {
 	}
 
 	public void clickOn_Save() {
-		btn_Save.click();
+		Wait.waitForElementToBeClickable(driver, btn_Save).click();
 	}
 
 	public void clickOn_Confirm() {
-		btn_Confirm.click();
+		Wait.waitForElementToBeClickable(driver, btn_Confirm).click();
 	}
 
 	public void clickOn_MarkAsDone() {
-		btn_MarkAsDone.click();
+		Wait.waitForElementToBeClickable(driver, btn_MarkAsDone).click();
 	}
 
 	public String get_ProductName() {

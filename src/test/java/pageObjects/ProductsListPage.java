@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utils.Wait;
+
 public class ProductsListPage {
 	WebDriver driver;
 
@@ -28,7 +30,7 @@ public class ProductsListPage {
 	}
 
 	public void clickOn_Create() {
-		btn_Create.click();
+		Wait.waitForElementToBeClickable(driver, btn_Create).click();
 	}
 
 	public void enter_ProductName(String name) {

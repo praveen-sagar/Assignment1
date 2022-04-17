@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utils.Wait;
+
 public class ManufacturingOrdersListPage {
 	WebDriver driver;
 
@@ -21,6 +23,6 @@ public class ManufacturingOrdersListPage {
 	}
 
 	public void clickOn_Create() {
-		btn_create.click();
+		Wait.waitForElementToBeClickable(driver, btn_create).click();
 	}
 }

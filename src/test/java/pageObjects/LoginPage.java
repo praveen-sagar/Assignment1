@@ -5,16 +5,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
 
 public class LoginPage {
-
 	WebDriver driver;
 
-	@FindBy(xpath = "// div/input[@id='login']")
+	@FindBy(xpath = "//div/input[@id='login']")
 	private WebElement txtbx_Email;
 
-	@FindBy(xpath = "// div/input[@id='password']")
+	@FindBy(xpath = "//div/input[@id='password']")
 	private WebElement txtbx_Password;
+	
+	@FindBy(xpath = "//p[@role='alert']")
+	private WebElement err_Message;
 
-	@FindBy(xpath = "// div/button[@type ='submit']")
+	@FindBy(xpath = "//div/button[@type ='submit']")
 	private WebElement btn_Login;
 
 	public LoginPage(WebDriver driver) {
@@ -28,6 +30,10 @@ public class LoginPage {
 
 	public void enter_Password(String password) {
 		txtbx_Password.sendKeys(password);
+	}
+	
+	public String get_Error_Message() {
+		return err_Message.getText();
 	}
 
 	public void clickOn_Login() {
