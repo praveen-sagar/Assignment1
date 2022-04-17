@@ -16,7 +16,7 @@
 4. Chrome Browser
 5. Git
 
-**Clone & Test Execution instruction:**  
+**Clone, Install & Test Execution instruction:**  
 
 _Run using Eclipse_
 1. Clone the project using url https://github.com/praveen-sagar/Assignment1.git  
