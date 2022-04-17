@@ -12,7 +12,7 @@ _Run using Eclipse_
 1. Clone the project using url https://github.com/praveen-sagar/Assignment1.git  
 2. Import maven project: `File > Import > Maven > Existing Maven Projects > Next > Browse & select cloned project > Finish`
 3. Run TestSuite1.xml file: `test-suites > TestSuite1.xml > Right Click > Run as > TestNG Suite`
-4. After successful test execution open mentioned file in any Browser: `test-output > index.html`
+4. After successful test execution open mentioned file in any Browser: `test-output\index.html`
 5. Now we can check the TestNG report for the TestSuite1
 
 
