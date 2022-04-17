@@ -28,7 +28,7 @@ public class NewProductPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void ClickOn_save() {
+	public void clickOn_save() {
 		Wait.waitForElementToBeClickable(driver, btn_Save).click();;
 	}
 

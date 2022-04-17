@@ -24,7 +24,9 @@ public class HomePage {
 		return btn_UserName.size() > 0;
 	}
 
-	public void clickOn_Menu(String featureLabel) {
+	// To click feature item.
+	public void clickOn_Feature(String featureLabel) {
+
 		for (WebElement feature : btn_Feature) {
 			if (feature.getText().equals(featureLabel)) {
 				feature.click();
