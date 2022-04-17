@@ -6,7 +6,7 @@
 3. Maven should be installed & path set, for download & installation follow: [Download Maven](https://maven.apache.org/download.cgi), [Install Maven & set environment variable](https://maven.apache.org/install.html)
 4. Chrome Browser
 
-**Installation instruction:**  
+**Clone & Test Execution instruction:**  
 
 _Run using Eclipse_
 1. Clone the project using url https://github.com/praveen-sagar/Assignment1.git  
@@ -21,3 +21,5 @@ _Run using Powershell or Terminal_
 2. Go to Project root location `cd Application1`
 3. Run maven clean install `mvn clean install`
 4. Run Test Suite `mvn clean test -DsuiteXmlFile=test_suite/TestSuite1`
+5. After successful test execution open mentioned file in any Browser: `target\surefire-reports\index.html`
+5. Now we can check the TestNG report for the TestSuite1
