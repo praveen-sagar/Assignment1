@@ -5,9 +5,9 @@ import java.util.Random;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import constants.HomeMenu;
-import constants.NavMenu;
-import constants.NavSubMenu;
+import constants.HomeFeature;
+import constants.TopMenu;
+import constants.TopSubMenu;
 import managers.PageObjectManager;
 import pageObjects.*;
 
@@ -21,7 +21,6 @@ public class Test1 extends TestBase {
 
 	LoginPage loginPage;
 	HomePage homePage;
-	InventoryPage inventoryPage;
 	ProductsListPage productsListPage;
 	NewProductPage newProductPage;
 	ProductPage productPage;
@@ -31,7 +30,9 @@ public class Test1 extends TestBase {
 	ManufacturingOrderPage manufacturingOrderPage;
 	ConfirmPopup confirmPopup;
 	PageObjectManager pageObjectManager;
+	TopMenuBar topMenuBar;
 
+	
 	@Test(priority = 0)
 	public void login_To_Web_Application() {
 		pageObjectManager = new PageObjectManager(driver);
@@ -43,22 +44,22 @@ public class Test1 extends TestBase {
 
 	@Test(dependsOnMethods = { "login_To_Web_Application" })
 	public void navigate_To_Inventory_Feature() {
-		homePage.clickOn_Menu(HomeMenu.INVENTORY);
+		homePage.clickOn_Feature(HomeFeature.INVENTORY);
 	}
 
 	@Test(dependsOnMethods = { "navigate_To_Inventory_Feature" })
 	public void create_New_Product() throws InterruptedException {
-		inventoryPage = pageObjectManager.getInventoryPage();
 		productsListPage = pageObjectManager.getProductsListPage();
 		newProductPage = pageObjectManager.getNewProductPage();
 		productPage = pageObjectManager.getProductPage();
-		inventoryPage.clickOn_Menu(NavMenu.Products);
-		inventoryPage.clickOn_SubMenu(NavSubMenu.Products);
+		topMenuBar = pageObjectManager.getTopMenuBar();
+		topMenuBar.clickOn_Menu(TopMenu.Products);
+		topMenuBar.clickOn_SubMenu(TopSubMenu.Products);
 		productsListPage.clickOn_Create();
 		newProductPage.enter_ProductName(PRODUCT_NAME);
-		newProductPage.ClickOn_save();
+		newProductPage.clickOn_save();
 		Thread.sleep(2000);
-		Assert.assertEquals(productPage.get_Title(), HomeMenu.PREFIX_TITLE + PRODUCT_NAME);
+		Assert.assertEquals(productPage.get_Title(), HomeFeature.PREFIX_TITLE + PRODUCT_NAME);
 	}
 
 	@Test(dependsOnMethods = { "create_New_Product" })
@@ -77,7 +78,7 @@ public class Test1 extends TestBase {
 
 	@Test(dependsOnMethods = { "navigate_To_HomePage" })
 	public void navigate_To_Manufacturing_Feature() {
-		homePage.clickOn_Menu(HomeMenu.MANUFACTURING);
+		homePage.clickOn_Feature(HomeFeature.MANUFACTURING);
 	}
 
 	@Test(dependsOnMethods = { "navigate_To_Manufacturing_Feature" })
@@ -89,7 +90,6 @@ public class Test1 extends TestBase {
 		newManufacturingOrderPage.select_Product(PRODUCT_NAME);
 		newManufacturingOrderPage.clickOn_Confirm();
 		Thread.sleep(2000);
-
 	}
 
 	@Test(dependsOnMethods = { "create_Manufacturing_Order" })
@@ -107,5 +107,4 @@ public class Test1 extends TestBase {
 	public void validate_Order() {
 		Assert.assertTrue(manufacturingOrderPage.get_ProductName().contains(PRODUCT_NAME));
 	}
-
 }
