@@ -16,6 +16,7 @@ public class PageObjectManager {
 	private NewProductPage newProductPage;
 	private ProductPage productPage;
 	private ProductsListPage productsListPage;
+	private TopMenuBar topMenuBar;
 	private UpdateQuantityPage updateQuantityPage;
 	private WebDriver driver;
 
@@ -61,6 +62,10 @@ public class PageObjectManager {
 	
 	public ProductsListPage getProductsListPage() {
 		return (productsListPage == null) ? productsListPage = new ProductsListPage(driver) : productsListPage;
+	}
+	
+	public TopMenuBar getTopMenuBar() {
+		return (topMenuBar == null) ? topMenuBar = new TopMenuBar(driver) : topMenuBar;
 	}
 
 	public UpdateQuantityPage getUpdateQuantityPage() {
