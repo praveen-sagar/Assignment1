@@ -7,7 +7,14 @@
 4. Chrome Browser
 
 **Installation instruction:**  
-Run using powershell or Terminal
+
+_Run using Eclipse_
+1. Clone the project using url https://github.com/praveen-sagar/Assignment1.git  
+2. Import maven project: File > Import > Maven > Existing Maven Projects > Next > Browse & select cloned project > Finish
+3. Run TestSuite1.xml file: test-suites > TestSuite1.xml > Right Click > Run as > TestNG Suite  
+
+
+_Run using Powershell or Terminal_
 1. Clone the project using url https://github.com/praveen-sagar/Assignment1.git  
     * `git clone https://github.com/praveen-sagar/Assignment1.git`
 2. Go to Project root location  
