@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utils.Wait;
+
 public class ConfirmPopup {
 	WebDriver driver;
 
@@ -29,14 +31,14 @@ public class ConfirmPopup {
 	}
 
 	public void clickOn_Close() {
-		btn_Close.click();
+		Wait.waitForElementToBeClickable(driver, btn_Close).click();
 	}
 
 	public void clickOn_OK() {
-		btn_footer.get(0).click();
+		Wait.waitForElementToBeClickable(driver, btn_footer.get(0)).click();
 	}
 
 	public void clickOn_Cancel() {
-		btn_footer.get(1).click();
+		Wait.waitForElementToBeClickable(driver, btn_footer.get(1)).click();
 	}
 }
