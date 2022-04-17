@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import managers.FileReaderManager;
 
 public class TestBase {
 	public WebDriver driver;
@@ -21,10 +22,11 @@ public class TestBase {
 		driver.manage().window().maximize();
 
 		// Implicit wait
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(
+				Duration.ofSeconds(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait()));
 
-		// To open Aspireapp site
-		driver.get("https://aspireapp.odoo.com");
+		// To open application site
+		driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
 	}
 
 	@AfterSuite
