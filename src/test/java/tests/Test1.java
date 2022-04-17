@@ -62,12 +62,11 @@ public class Test1 extends TestBase {
 	}
 
 	@Test(dependsOnMethods = { "create_New_Product" })
-	@Parameters("productQty")
-	public void update_Product_Quantity(String productQty) throws InterruptedException {
+	public void update_Product_Quantity() throws InterruptedException {
 		productPage.clickOn_UpdateQuantity();
 		updateQuantityPage = pageObjectManager.getUpdateQuantityPage();
 		updateQuantityPage.clickOn_Create();
-		updateQuantityPage.enter_Quantity(productQty);
+		updateQuantityPage.enter_Quantity(PRODUCT_QTY);
 		updateQuantityPage.clickOn_Save();
 	}
 
