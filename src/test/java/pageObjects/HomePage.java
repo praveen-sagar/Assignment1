@@ -13,7 +13,7 @@ public class HomePage {
 	private List<WebElement> btn_UserName;
 
 	@FindBy(xpath = "//div[@role='listbox']/a/div[2]")
-	private List<WebElement> menuItems;
+	private List<WebElement> btn_Feature;
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -24,12 +24,10 @@ public class HomePage {
 		return btn_UserName.size() > 0;
 	}
 
-	// To click Menu Item.
-	public void clickOn_Menu(String menu) {
-
-		for (WebElement webElement : menuItems) {
-			if (webElement.getText().equals(menu)) {
-				webElement.click();
+	public void clickOn_Menu(String featureLabel) {
+		for (WebElement feature : btn_Feature) {
+			if (feature.getText().equals(featureLabel)) {
+				feature.click();
 			}
 		}
 	}
