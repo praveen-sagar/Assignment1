@@ -33,20 +33,21 @@ public class Test1 extends TestBase {
 	PageObjectManager pageObjectManager;
 
 	@Test(priority = 0)
-	public void loginApp() {
+	public void login_To_Web_Application() {
 		pageObjectManager = new PageObjectManager(driver);
 		loginPage = pageObjectManager.getLoginPage();
+		homePage = pageObjectManager.getHomePage();
 		loginPage.do_Login(USERNAME, PASSWORD);
+		Assert.assertTrue(homePage.Check_Username_exists(), "Wrong Email/Password");
 	}
 
-	@Test(priority = 1)
-	public void navigateToInventory() {
-		homePage = pageObjectManager.getHomePage();
+	@Test(dependsOnMethods = { "login_To_Web_Application" })
+	public void navigate_To_Inventory_Feature() {
 		homePage.clickOn_Menu(HomeMenu.INVENTORY);
 	}
 
-	@Test(priority = 2)
-	public void createProduct() throws InterruptedException {
+	@Test(dependsOnMethods = { "navigate_To_Inventory_Feature" })
+	public void create_New_Product() throws InterruptedException {
 		inventoryPage = pageObjectManager.getInventoryPage();
 		productsListPage = pageObjectManager.getProductsListPage();
 		newProductPage = pageObjectManager.getNewProductPage();
@@ -54,35 +55,34 @@ public class Test1 extends TestBase {
 		inventoryPage.clickOn_Menu(NavMenu.Products);
 		inventoryPage.clickOn_SubMenu(NavSubMenu.Products);
 		productsListPage.clickOn_Create();
-		Thread.sleep(1000);
-		newProductPage.enterProductName(PRODUCT_NAME);
-		newProductPage.save();
-		Thread.sleep(1000);
-		Assert.assertEquals(productPage.getTitle(), HomeMenu.PREFIX_TITLE + PRODUCT_NAME);
+		newProductPage.enter_ProductName(PRODUCT_NAME);
+		newProductPage.ClickOn_save();
+		Thread.sleep(2000);
+		Assert.assertEquals(productPage.get_Title(), HomeMenu.PREFIX_TITLE + PRODUCT_NAME);
 	}
 
-	@Test(priority = 3)
-	public void updateProductQuantity() throws InterruptedException {
-		productPage.clickUpdateQuantity();
+	@Test(dependsOnMethods = { "create_New_Product" })
+	@Parameters("productQty")
+	public void update_Product_Quantity(String productQty) throws InterruptedException {
+		productPage.clickOn_UpdateQuantity();
 		updateQuantityPage = pageObjectManager.getUpdateQuantityPage();
-		Thread.sleep(2000);
 		updateQuantityPage.clickOn_Create();
-		updateQuantityPage.enter_Quantity(PRODUCT_QTY);
+		updateQuantityPage.enter_Quantity(productQty);
 		updateQuantityPage.clickOn_Save();
 	}
 
-	@Test(priority = 4)
-	public void navigateHomePage() {
+	@Test(dependsOnMethods = { "update_Product_Quantity" })
+	public void navigate_To_HomePage() {
 		updateQuantityPage.clickOn_Home();
 	}
 
-	@Test(priority = 5)
-	public void navigateToManufacturing() {
+	@Test(dependsOnMethods = { "navigate_To_HomePage" })
+	public void navigate_To_Manufacturing_Feature() {
 		homePage.clickOn_Menu(HomeMenu.MANUFACTURING);
 	}
 
-	@Test(priority = 6)
-	public void createManufacturingOrder() throws InterruptedException {
+	@Test(dependsOnMethods = { "navigate_To_Manufacturing_Feature" })
+	public void create_Manufacturing_Order() throws InterruptedException {
 		manufacturingOrdersListPage = pageObjectManager.getManufacturingOrdersListPage();
 		manufacturingOrdersListPage.clickOn_Create();
 		Thread.sleep(1000);
@@ -93,22 +93,19 @@ public class Test1 extends TestBase {
 
 	}
 
-	@Test(priority = 7)
-	public void markManufacturingOrderDone() throws InterruptedException {
+	@Test(dependsOnMethods = { "create_Manufacturing_Order" })
+	public void mark_Manufacturing_Order_Done() throws InterruptedException {
 		manufacturingOrderPage = pageObjectManager.getManufacturingOrderPage();
 		confirmPopup = pageObjectManager.getConfirmPopup();
 		manufacturingOrderPage.clickOn_MarkAsDone();
-		Thread.sleep(1000);
 		confirmPopup.clickOn_OK();
 		Thread.sleep(1000);
 		confirmPopup.clickOn_OK();
-		Thread.sleep(1000);
 		manufacturingOrderPage.clickOn_Save();
-		Thread.sleep(2000);
 	}
 
-	@Test(priority = 8)
-	public void validateOrder() throws InterruptedException {
+	@Test(dependsOnMethods = { "mark_Manufacturing_Order_Done" })
+	public void validate_Order() {
 		Assert.assertTrue(manufacturingOrderPage.get_ProductName().contains(PRODUCT_NAME));
 	}
 
