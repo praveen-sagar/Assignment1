@@ -19,7 +19,6 @@ _Run using Eclipse_
 _Run using Powershell or Terminal_
 1. Clone the project `git clone https://github.com/praveen-sagar/Assignment1.git`
 2. Go to Project root location `cd Application1`
-3. Run maven clean install `mvn clean install`
-4. Run Test Suite `mvn clean test -DsuiteXmlFile=test_suite/TestSuite1`
-5. After successful test execution open mentioned file in any Browser: `target\surefire-reports\index.html`
+3. Run Test Suite `mvn clean test -DsuiteXmlFile=test_suite/TestSuite1`
+4. After successful test execution open mentioned file in any Browser: `target\surefire-reports\index.html`
 5. Now we can check the TestNG report for the TestSuite1
