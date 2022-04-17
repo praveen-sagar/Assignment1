@@ -1,4 +1,4 @@
-# Assignement
+# Assignement1
 
 **Prerqusite:**
 1. JDK 8, [Follow JDK 8 installation](https://www.codejava.net/java-se/download-and-install-java-8-on-windows)
@@ -10,16 +10,14 @@
 
 _Run using Eclipse_
 1. Clone the project using url https://github.com/praveen-sagar/Assignment1.git  
-2. Import maven project: File > Import > Maven > Existing Maven Projects > Next > Browse & select cloned project > Finish
-3. Run TestSuite1.xml file: test-suites > TestSuite1.xml > Right Click > Run as > TestNG Suite  
+2. Import maven project: `File > Import > Maven > Existing Maven Projects > Next > Browse & select cloned project > Finish`
+3. Run TestSuite1.xml file: `test-suites > TestSuite1.xml > Right Click > Run as > TestNG Suite`
+4. After successful test execution open mentioned file in any Browser: `test-output > index.html`
+5. Now we can check the TestNG report for the TestSuite1
 
 
 _Run using Powershell or Terminal_
-1. Clone the project using url https://github.com/praveen-sagar/Assignment1.git  
-    * `git clone https://github.com/praveen-sagar/Assignment1.git`
-2. Go to Project root location  
-    * `cd Application1`
-3. Run maven clean install
-    * `mvn clean install`
-4. run Test Suite
-    * `mvn clean test -DsuiteXmlFile=test_suite/TestSuite1`
+1. Clone the project `git clone https://github.com/praveen-sagar/Assignment1.git`
+2. Go to Project root location `cd Application1`
+3. Run maven clean install `mvn clean install`
+4. Run Test Suite `mvn clean test -DsuiteXmlFile=test_suite/TestSuite1`
